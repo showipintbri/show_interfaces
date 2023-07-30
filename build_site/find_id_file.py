@@ -1,5 +1,4 @@
-# file to walk-through all the directories and files, reading data and outputing a python dictionary.
-# The dictionary is to be processed by the next script to build all the javascript objects.
+# Find the "*.id" file used to build the folder and file structure.
 
 import os
 import sys
@@ -39,3 +38,6 @@ if file_path:
     print(file_text)
 else:
     sys.exit(0)
+
+
+filenames = ['summary.md', 'configuration.md', 'details.md', 'links.md']
