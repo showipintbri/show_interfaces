@@ -7,8 +7,9 @@ import os
 class BuildFoldersAndFiles:
 
     def __init__(self, id):
-        self.id = ''
-        self.filenames = []
+        # self.id = ''
+        # self.filenames = []
+        pass
 
     def find_all_tags(self, string) -> list:
         # re.findall(pattern, string, flags=0)
@@ -20,8 +21,6 @@ class BuildFoldersAndFiles:
     # print(all_tags)
 
     def find_all_start_tags(self, string) -> list:
-        import re
-        # re.findall(pattern, string, flags=0)
         list = re.findall('<\w+>', string)
         start_tags = [tag for tag in list if tag[1] != '/']
         return start_tags
@@ -75,7 +74,7 @@ class BuildFoldersAndFiles:
                 print(f'File "{dir}/{file}" successfully created or already exists.')
         return None
 
-    def make_dirs_from_tags(self, list_of_tags: list) -> None:
+    def make_dirs_from_tags(self, list_of_tags: list, list_of_filenames: list) -> None:
         for tag in list_of_tags:
             if not os.path.exists(tag):
                 try:
@@ -84,10 +83,10 @@ class BuildFoldersAndFiles:
                     print(f'ERROR: Couldn\'t make folder: "{tag}"')
                 else:
                     print(f'Folder "{tag}" created.')
-                    create_placeholder_files(tag, filenames)
+                    create_placeholder_files(tag, list_of_filenames)
             else:
                 print(f'Folder "{tag}" already exists.')
-                create_placeholder_files(tag, filenames)
+                create_placeholder_files(tag, list_of_filenames)
         return None
 
     # make_dirs_from_tags(just_tag_text)
