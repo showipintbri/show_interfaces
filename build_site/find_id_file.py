@@ -2,10 +2,10 @@
 
 
 class FindIdFile:
-    import os
-    import sys
 
-    # def __init__(self, file_extension):
+    def __init__(self):
+        import os
+        import sys
     #     self.file_extension = file_extension
     #     # remember include the leading "." infront of the extension letters
     #     # example: ".exe" not "exe"
