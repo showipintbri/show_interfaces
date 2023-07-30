@@ -91,8 +91,34 @@ list_of_dicts = get_tag_and_element(id, just_tag_text)
 
 print(list_of_dicts)
 
-for dict in list_of_dicts:
-    foldername = dict['tag']
-    print(foldername)
-    if not os.path.exists(foldername):
-        os.makedirs(foldername)
+# List of empty filenames to create:
+
+filenames = ['summary.md', 'configuration.md', 'details.md', 'links.md']
+
+def create_placeholder_files(dir: str, filenames: list):
+    for file in filenames:
+        try:
+            open(f'{dir}/{file}', 'a').close()
+        except OSError:
+            print(f'ERROR: Failed creating the file: "{dir}/{file}"')   
+        else:
+            print(f'File "{dir}/{file}" successfully created.')
+    return None
+
+def make_dirs_from_tags(list_of_tags):
+    for tag in list_of_tags:
+        if not os.path.exists(tag):
+            try:
+                os.makedirs(tag)
+            except:
+                print(f'ERROR: Couldn\'t make folder: "{tag}"')
+            else:
+                print(f'Folder "{tag}" created.')
+                create_placeholder_files(tag, filenames)
+        else:
+            print(f'Folder "{tag}" already exists.')
+            create_placeholder_files(tag, filenames)
+    return None
+
+make_dirs_from_tags(just_tag_text)
+
