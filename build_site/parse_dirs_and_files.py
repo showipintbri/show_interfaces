@@ -2,20 +2,22 @@
 # The dictionary is to be processed by the next script to build all the javascript objects.
 
 import os
+import sys
 
 # remember include the leading "." infront of the extension letters
 # example: ".exe" not "exe"
 file_extension = '.id'
 
+def read_file(pathname: str) -> str:
+    file = open(pathname, rt)
+    all_text = file.read()
+    return all_text
+
 def find_and_return_the_id_file_path(file_ext):
     current_dir = os.getcwd()
-
     # parent_dir = os.path.dirname(current_dir)
-
     list_dir = os.listdir(current_dir)
-
     # print(list_dir)
-
     for i in list_dir:
         path = f'{current_dir}/{i}'
         if os.path.isdir(path):
@@ -24,7 +26,7 @@ def find_and_return_the_id_file_path(file_ext):
                 if os.path.isfile(f'{path}/{file}'):
                     split_ext = os.path.splitext(f'{path}/{file}')
                     if split_ext[1] == file_ext:
-                        print(f'FOUND: "{path}/{file}"')
+                        print(f'INFO: Found "{path}/{file}"')
                         return f'{path}/{file}'
     print(f'INFO: No *{file_ext} file found.')
     return False
@@ -33,5 +35,8 @@ file_path = find_and_return_the_id_file_path(file_extension)
 
 if file_path:
     print(file_path)
+    file_text = read_file(file_path)
+    print(file_text)
 else:
-    print('returned FALSE')
+    sys.exit(0)
+    
