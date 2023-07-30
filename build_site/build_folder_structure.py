@@ -37,7 +37,7 @@ class BuildFoldersAndFiles:
     def extract_all_tag_text(list) -> list:
         new_list = []
         for i in list:
-            just_text = extract_tag_text(i)
+            just_text = self.extract_tag_text(i)
             new_list.append(just_text)
         return new_list
 
