@@ -21,5 +21,5 @@ all_start_tags_list = BuildFoldersAndFiles.find_all_start_tags(file_text)
 
 just_tags_text_list = BuildFoldersAndFiles.extract_all_tag_text(all_start_tags_list)
 
-BuildFoldersAndFiles.make_dirs_from_tags(just_tags_text_list, filenames)
+BuildFoldersAndFiles.make_dirs_from_tags(file_path, just_tags_text_list, filenames)
 

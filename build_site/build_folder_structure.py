@@ -6,12 +6,12 @@ import os
 
 class BuildFoldersAndFiles:
 
-    def __init__(self, id):
+    def __init__(self):
         # self.id = ''
         # self.filenames = []
         pass
 
-    def find_all_tags(self, string) -> list:
+    def find_all_tags(string) -> list:
         # re.findall(pattern, string, flags=0)
         list = re.findall('</*\w+>', string)
         return list
@@ -20,7 +20,7 @@ class BuildFoldersAndFiles:
 
     # print(all_tags)
 
-    def find_all_start_tags(self, string) -> list:
+    def find_all_start_tags(string) -> list:
         list = re.findall('<\w+>', string)
         start_tags = [tag for tag in list if tag[1] != '/']
         return start_tags
@@ -29,12 +29,12 @@ class BuildFoldersAndFiles:
 
     # print(start_tags)
 
-    def extract_tag_text(self, tag) -> str:
+    def extract_tag_text(tag) -> str:
         remove_first_char = tag[1:]
         remove_last_char = remove_first_char[:-1]
         return remove_last_char
 
-    def extract_all_tag_text(self, list) -> list:
+    def extract_all_tag_text(list) -> list:
         new_list = []
         for i in list:
             just_text = extract_tag_text(i)
@@ -46,7 +46,7 @@ class BuildFoldersAndFiles:
     # print(just_tag_text)
             
 
-    def get_tag_and_element(self, string: str, all_raw_tag_text: list) -> list:
+    def get_tag_and_element(string: str, all_raw_tag_text: list) -> list:
         list_of_dicts = []
         for tag in all_raw_tag_text:
             w = re.search(f'<{tag}>(?P<element>.+)</{tag}>', string)
@@ -64,7 +64,7 @@ class BuildFoldersAndFiles:
 
 
 
-    def create_placeholder_files(self, dir: str, filenames: list) -> None:
+    def create_placeholder_files(dir: str, filenames: list) -> None:
         for file in filenames:
             try:
                 open(f'{dir}/{file}', 'a').close()
@@ -74,19 +74,24 @@ class BuildFoldersAndFiles:
                 print(f'File "{dir}/{file}" successfully created or already exists.')
         return None
 
-    def make_dirs_from_tags(self, list_of_tags: list, list_of_filenames: list) -> None:
+    def make_dirs_from_tags(path: str, list_of_tags: list, list_of_filenames: list) -> None:
+        file_path = os.path.splitext(path)
+        file_path_head = file_path[0]
+        if not os.path.exists(file_path_head):
+            os.makedirs(file_path_head)
         for tag in list_of_tags:
-            if not os.path.exists(tag):
+            path_with_tag = f'{file_path_head}/{tag}'
+            if not os.path.exists(path_with_tag):
                 try:
-                    os.makedirs(tag)
+                    os.makedirs(path_with_tag)
                 except:
-                    print(f'ERROR: Couldn\'t make folder: "{tag}"')
+                    print(f'ERROR: Couldn\'t make folder: "{path_with_tag}"')
                 else:
-                    print(f'Folder "{tag}" created.')
-                    create_placeholder_files(tag, list_of_filenames)
+                    print(f'Folder "{path_with_tag}" created.')
+                    create_placeholder_files(path_with_tag, list_of_filenames)
             else:
-                print(f'Folder "{tag}" already exists.')
-                create_placeholder_files(tag, list_of_filenames)
+                print(f'Folder "{path_with_tag}" already exists.')
+                create_placeholder_files(path_with_tag, list_of_filenames)
         return None
 
     # make_dirs_from_tags(just_tag_text)
