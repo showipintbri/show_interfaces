@@ -1,5 +1,7 @@
 # Find the "*.id" file used to build the folder and file structure.
 
+import os
+import sys
 
 class FindIdFile:
 
