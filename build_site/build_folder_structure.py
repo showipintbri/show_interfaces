@@ -4,6 +4,7 @@
 
 
 import re
+import os
 
 # Example "id" string below. Ideally we want to open the file *.id in the OS folder and load it as a string to be parsed
 id = """<physical_status>TenGigabitEthernet1/5/4 is up</physical_status>, <line_protocol>line protocol is up (connected)</line_protocol>
@@ -86,7 +87,12 @@ def get_tag_and_element(string: str, all_raw_tag_text: list) -> list:
     return list_of_dicts
         
         
-dictionary = get_tag_and_element(id, just_tag_text)
+list_of_dicts = get_tag_and_element(id, just_tag_text)
 
-print(dictionary)
+print(list_of_dicts)
 
+for dict in list_of_dicts:
+    foldername = dict['tag']
+    print(foldername)
+    if not os.path.exists(foldername):
+        os.makedirs(foldername)
