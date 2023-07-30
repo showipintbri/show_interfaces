@@ -9,7 +9,7 @@ import sys
 file_extension = '.id'
 
 def read_file(pathname: str) -> str:
-    file = open(pathname, rt)
+    file = open(pathname, "rt")
     all_text = file.read()
     return all_text
 
@@ -39,4 +39,3 @@ if file_path:
     print(file_text)
 else:
     sys.exit(0)
-    
