@@ -7,17 +7,17 @@ import os
 # example: ".exe" not "exe"
 file_extension = '.id'
 
-def find_and_return_the_id_file_as_string(file_ext):
+def find_and_return_the_id_file_path(file_ext):
     current_dir = os.getcwd()
 
-    parent_dir = os.path.dirname(current_dir)
+    # parent_dir = os.path.dirname(current_dir)
 
-    list_dir = os.listdir(parent_dir)
+    list_dir = os.listdir(current_dir)
 
     # print(list_dir)
 
     for i in list_dir:
-        path = f'{parent_dir}/{i}'
+        path = f'{current_dir}/{i}'
         if os.path.isdir(path):
             list_of_files = os.listdir(path)
             for file in list_of_files:
@@ -25,9 +25,13 @@ def find_and_return_the_id_file_as_string(file_ext):
                     split_ext = os.path.splitext(f'{path}/{file}')
                     if split_ext[1] == file_ext:
                         print(f'FOUND: "{path}/{file}"')
-                        return 'place holder string'
+                        return f'{path}/{file}'
     print(f'INFO: No *{file_ext} file found.')
-    return None
+    return False
 
-find_and_return_the_id_file_as_string(file_extension)                
-        
+file_path = find_and_return_the_id_file_path(file_extension)              
+
+if file_path:
+    print(file_path)
+else:
+    print('returned FALSE')
