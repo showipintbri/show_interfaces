@@ -102,7 +102,7 @@ def create_placeholder_files(dir: str, filenames: list):
         except OSError:
             print(f'ERROR: Failed creating the file: "{dir}/{file}"')   
         else:
-            print(f'File "{dir}/{file}" successfully created.')
+            print(f'File "{dir}/{file}" successfully created or already exists.')
     return None
 
 def make_dirs_from_tags(list_of_tags):
