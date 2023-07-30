@@ -10,12 +10,12 @@ class FindIdFile:
     #     # remember include the leading "." infront of the extension letters
     #     # example: ".exe" not "exe"
     
-    def read_file(self, pathname: str) -> str:
+    def read_file(pathname: str) -> str:
         file = open(pathname, "rt")
         all_text = file.read()
         return all_text
 
-    def find_and_return_the_id_file_path(self, file_ext):
+    def find_and_return_the_id_file_path(file_ext):
         current_dir = os.getcwd()
         # parent_dir = os.path.dirname(current_dir)
         list_dir = os.listdir(current_dir)
