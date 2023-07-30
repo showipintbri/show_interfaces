@@ -1,10 +1,10 @@
 # This file can build the template folder structure and placeholder *.md files based on a single 'tagged'/'annotated'  show interfaces output
 # Simply execute this script and supply the filename of the annotated file: 
 # "build_folder_structure.py show_interfaces.id"
+import re
+import os
 
 class BuildFoldersAndFiles:
-    import re
-    import os
 
     def __init__(self, id):
         self.id = ''

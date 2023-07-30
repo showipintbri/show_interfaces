@@ -1,8 +1,6 @@
 from find_id_file import FindIdFile
 from build_folder_structure import BuildFoldersAndFiles
-import sys
-import os
-import re
+
 
 # remember include the leading "." infront of the extension letters
 # example: ".exe" not "exe"
