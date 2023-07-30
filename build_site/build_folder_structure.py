@@ -29,12 +29,12 @@ class BuildFoldersAndFiles:
 
     # print(start_tags)
 
-    def extract_tag_text(tag) -> str:
+    def extract_tag_text(self, tag) -> str:
         remove_first_char = tag[1:]
         remove_last_char = remove_first_char[:-1]
         return remove_last_char
 
-    def extract_all_tag_text(list) -> list:
+    def extract_all_tag_text(self, list) -> list:
         new_list = []
         for i in list:
             just_text = self.extract_tag_text(i)
