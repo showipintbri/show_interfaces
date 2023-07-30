@@ -34,7 +34,7 @@ class BuildFoldersAndFiles:
         remove_last_char = remove_first_char[:-1]
         return remove_last_char
 
-    def extract_all_tag_text(self, list) -> list:
+    def extract_all_tag_text(list) -> list:
         new_list = []
         for i in list:
             just_text = self.extract_tag_text(i)
