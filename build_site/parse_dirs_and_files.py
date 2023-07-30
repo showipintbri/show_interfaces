@@ -3,6 +3,8 @@
 
 import os
 
+# remember include the leading "." infront of the extension letters
+# example: ".exe" not "exe"
 file_extension = '.id'
 
 def find_and_return_the_id_file_as_string(file_ext):
@@ -24,7 +26,7 @@ def find_and_return_the_id_file_as_string(file_ext):
                     if split_ext[1] == file_ext:
                         print(f'FOUND: "{path}/{file}"')
                         return 'place holder string'
-    print(f'INFO: No *.{file_ext} file found.')
+    print(f'INFO: No *{file_ext} file found.')
     return None
 
 find_and_return_the_id_file_as_string(file_extension)                
