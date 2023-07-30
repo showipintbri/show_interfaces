@@ -1,0 +1,31 @@
+<physical_status>TenGigabitEthernet1/5/4 is up</physical_status>, <line_protocol>line protocol is up (connected)</line_protocol>
+  <hardware_is>Hardware is C6k 10000Mb 802.3</hardware_is>, <mac_addr_is>address is 0000.0000.fd90</mac_addr_is> <bia>(bia 0008.ef4a.fd90)</bia>
+  <mtu>MTU 1500 bytes</mtu>, <bandwidth>BW 10000 Kbit/sec</bandwidth>, <delay>DLY 100 usec</delay>,
+     <reliability>reliability 255/255, txload 1/255, rxload 1/255</reliability>
+  <encapsulation>Encapsulation ARPA</encapsulation>, <loopback>loopback not set</loopback>
+  <keepalive>Keepalive set (10 sec)</keepalive>
+  <duplex>Full-duplex</duplex>, <speed>10Gb/s</speed>, <media_type>media type is 10Gbase-SR</media_type>
+  <flow_control>input flow-control is on, output flow-control is off</flow_control>
+  <clock_mode>Clock mode is auto</clock_mode>
+  <arp_type>ARP type: ARPA</arp_type>, <arp_timeout>ARP Timeout 04:00:00</arp_timeout>
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 7000 bits/sec, 8 packets/sec
+  5 minute output rate 10000 bits/sec, 11 packets/sec
+  L2 Switched: ucast: 0 pkt, 0 bytes - mcast: 0 pkt, 0 bytes
+  L3 in Switched: ucast: 0 pkt, 0 bytes - mcast: 0 pkt, 0 bytes mcast
+  L3 out Switched: ucast: 0 pkt, 0 bytes mcast: 0 pkt, 0 bytes
+     4495527 packets input, 488522378 bytes, 0 no buffer
+     Received 4460539 broadcasts (1153347 multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     0 input packets with dribble condition detected
+     6925984 packets output, 825456963 bytes, 0 underruns
+     0 output errors, 0 collisions, 1 interface resets
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 PAUSE output
+     0 output buffer failures, 0 output buffers swapped out
