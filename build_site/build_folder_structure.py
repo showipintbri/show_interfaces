@@ -77,7 +77,7 @@ class BuildFoldersAndFiles:
                 print(f'File "{dir}/{file}" successfully created or already exists.')
         return None
 
-    def make_dirs_from_tags(path: str, list_of_tags: list, list_of_filenames: list) -> None:
+    def make_dirs_from_tags(self, path: str, list_of_tags: list, list_of_filenames: list) -> None:
         file_path = os.path.splitext(path)
         file_path_head = file_path[0]
         if not os.path.exists(file_path_head):
@@ -91,10 +91,10 @@ class BuildFoldersAndFiles:
                     print(f'ERROR: Couldn\'t make folder: "{path_with_tag}"')
                 else:
                     print(f'Folder "{path_with_tag}" created.')
-                    create_placeholder_files(path_with_tag, list_of_filenames)
+                    self.create_placeholder_files(path_with_tag, list_of_filenames)
             else:
                 print(f'Folder "{path_with_tag}" already exists.')
-                create_placeholder_files(path_with_tag, list_of_filenames)
+                self.create_placeholder_files(path_with_tag, list_of_filenames)
         return None
 
     # make_dirs_from_tags(just_tag_text)
