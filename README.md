@@ -1,7 +1,7 @@
 # `show interfaces` command output
 Explanation of Cisco's `show interfaces` command output.
 
-Using the below output we assign a unique "ID" to each element we want to describe.
+Using the below example command output we assign a unique "ID" to each element we want to describe.
 ```
 TenGigabitEthernet1/5/4 is up, line protocol is up (connected)
   Hardware is C6k 10000Mb 802.3, address is 0000.0000.fd90 (bia 0008.ef4a.fd90)
@@ -40,7 +40,30 @@ TenGigabitEthernet1/5/4 is up, line protocol is up (connected)
 ```
 
 ### Repo Structure
-1. Each element has an `id` tag.
+```
+Repo:
+  |--build_site/
+  |      (scripts to build the site)
+  |
+  |--show_interfaces/ # Folder Name == Command
+       |
+       |--ios_xe.id   # Annotated file, using HTML/XML-like styled ID tags. This is the file
+       |              #   the build scripts use to setup the folder structure and files
+       |--ios_xe.raw  # Raw Command Output scraped from the CLI
+       |
+- - - -|- - - - <[Everything from here up is manually created. From here Down is automated]> - - - - -
+       |
+       |--ios_xe/     # Folder Name is determined by the *.id filename. Build scripts buld this folder.
+            |
+            |--[tag_name]/  # Folder name is dtermined by the ID tags in the *.id file. The build script sets this up.
+                 |
+                 |--summary.md       # Short blurb about the elements purpose.
+                 |--configuration.md # If the element can be configured, how?
+                 |--details.md       # Detailed explanation, including diagrams or any content necessary.
+                 |--links.md         # List of links to external resources, to explain further.
+```
+
+1. Each element inside the `[os_name].id` file has a tag. I call this tag the "ID" tag.
 2. Each ID has a folder.
 3. Inside each folder are description documents written in Markdown.
 4. Common documents inside each folder are:
@@ -48,3 +71,14 @@ TenGigabitEthernet1/5/4 is up, line protocol is up (connected)
    - Configuration: `configuration.md` - If the element can be configured, how?
    - Detailed Explanation: `details.md` - Detailed explanation, including diagrams or any content necessary.
    - Links: `links.md` - List of links to external resources, to explain further. Good place to link to vendor documentation.
+
+## How can I add a new command or missing OS output?
+1. Add folder to the root dir of repo. Folder name should be the generalized command using lowercase and underscores.
+2. In the new folder make 2 new files each named with the OS the output is from. Examples: "nx_os", "ios_xr", "ios", "ios_xe". One file extension should end in: ".raw" and the other ".id".
+3. Start marking up the *.id file you just created making sure to use unique ID names.
+4. When finished, run the build script:
+   ```
+   cd [repo_root]
+   python3 build_site/main.py
+   ```
+   This will setup all the folders and Markdown file placeholders for you based on the ID tags you marked up your *.id file with.
