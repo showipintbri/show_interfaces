@@ -67,7 +67,7 @@ class BuildFoldersAndFiles:
 
 
 
-    def create_placeholder_files(dir: str, filenames: list) -> None:
+    def create_placeholder_files(self, dir: str, filenames: list) -> None:
         for file in filenames:
             try:
                 open(f'{dir}/{file}', 'a').close()
