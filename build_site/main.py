@@ -17,9 +17,11 @@ else:
 
 filenames = ['summary.md', 'configuration.md', 'details.md', 'links.md']
 
-all_start_tags_list = BuildFoldersAndFiles.find_all_start_tags(file_text)
+bfaf = BuildFoldersAndFiles()
 
-just_tags_text_list = BuildFoldersAndFiles.extract_all_tag_text(all_start_tags_list)
+all_start_tags_list = bfaf.find_all_start_tags(file_text)
 
-BuildFoldersAndFiles.make_dirs_from_tags(file_path, just_tags_text_list, filenames)
+just_tags_text_list = bfaf.extract_all_tag_text(all_start_tags_list)
+
+bfaf.make_dirs_from_tags(file_path, just_tags_text_list, filenames)
 

@@ -6,13 +6,12 @@ import os
 
 class BuildFoldersAndFiles:
 
-    def __init__(self, cmd_output: str, filenames: list):
-        self.cmd_output = cmd_output
-        self.filenames = filenames
+    def __init__(self):
+        # self.cmd_output = cmd_output
+        # self.filenames = filenames
         pass
 
-    def find_all_tags(self) -> list:
-        cmd_output = self.cmd_output
+    def find_all_tags(self, cmd_output: str) -> list:
         # re.findall(pattern, string, flags=0)
         list = re.findall('</*\w+>', cmd_output)
         self.all_tags = list
@@ -22,8 +21,7 @@ class BuildFoldersAndFiles:
 
     # print(all_tags)
 
-    def find_all_start_tags(self) -> list:
-        cmd_output = self.cmd_output
+    def find_all_start_tags(self, cmd_output: str) -> list:
         list = re.findall('<\w+>', cmd_output)
         start_tags = [tag for tag in list if tag[1] != '/'] #This may not be needed anymore
         self.start_tags = start_tags
