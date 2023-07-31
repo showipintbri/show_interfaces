@@ -6,24 +6,28 @@ import os
 
 class BuildFoldersAndFiles:
 
-    def __init__(self):
-        # self.id = ''
-        # self.filenames = []
+    def __init__(self, cmd_output: str, filenames: list):
+        self.cmd_output = cmd_output
+        self.filenames = filenames
         pass
 
-    def find_all_tags(string) -> list:
+    def find_all_tags(self) -> list:
+        cmd_output = self.cmd_output
         # re.findall(pattern, string, flags=0)
-        list = re.findall('</*\w+>', string)
-        return list
+        list = re.findall('</*\w+>', cmd_output)
+        self.all_tags = list
+        return self.all_tags
 
     # all_tags = find_all_tags(id)
 
     # print(all_tags)
 
-    def find_all_start_tags(string) -> list:
-        list = re.findall('<\w+>', string)
-        start_tags = [tag for tag in list if tag[1] != '/']
-        return start_tags
+    def find_all_start_tags(self) -> list:
+        cmd_output = self.cmd_output
+        list = re.findall('<\w+>', cmd_output)
+        start_tags = [tag for tag in list if tag[1] != '/'] #This may not be needed anymore
+        self.start_tags = start_tags
+        return self.start_tags
 
     # start_tags = find_all_start_tags(id)
 
@@ -34,12 +38,13 @@ class BuildFoldersAndFiles:
         remove_last_char = remove_first_char[:-1]
         return remove_last_char
 
-    def extract_all_tag_text(list) -> list:
+    def extract_all_tag_text(self, list) -> list:
         new_list = []
         for i in list:
             just_text = self.extract_tag_text(i)
             new_list.append(just_text)
-        return new_list
+        self.all_tag_text = new_list
+        return self.all_tag_text
 
     # just_tag_text = extract_all_tag_text(start_tags)
 
