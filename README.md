@@ -79,6 +79,7 @@ Repo:
 4. When finished, run the build script:
    ```
    cd [repo_root]
-   python3 build_site/main.py
+   python3 build_site/build_infrastructure.py
    ```
    This will setup all the folders and Markdown file placeholders for you based on the ID tags you marked up your *.id file with.
+5. Begin inputting data in the placeholder files using Markdown syntax.

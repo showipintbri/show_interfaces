@@ -15,13 +15,30 @@ if file_path:
 else:
     sys.exit(0)
 
-filenames = ['summary.md', 'configuration.md', 'details.md', 'links.md']
+def build_infrastructure(file_text):
+    filenames = ['summary.md', 'configuration.md', 'details.md', 'links.md']
 
-bfaf = BuildFoldersAndFiles()
+    bfaf = BuildFoldersAndFiles()
 
-all_start_tags_list = bfaf.find_all_start_tags(file_text)
+    all_start_tags_list = bfaf.find_all_start_tags(file_text)
 
-just_tags_text_list = bfaf.extract_all_tag_text(all_start_tags_list)
+    just_tags_text_list = bfaf.extract_all_tag_text(all_start_tags_list)
 
-bfaf.make_dirs_from_tags(file_path, just_tags_text_list, filenames)
+    bfaf.make_dirs_from_tags(file_path, just_tags_text_list, filenames)
+    return None
+
+def build_site(file_text):
+    bfaf = BuildFoldersAndFiles()
+    all_start_tags_list = bfaf.find_all_start_tags(file_text)
+    just_tags_text_list = bfaf.extract_all_tag_text(all_start_tags_list)
+    list_of_dicts = bfaf.get_tag_and_element(file_text, just_tags_text_list)
+    print(list_of_dicts)
+    return None
+
+build_infrastructure(file_text)
+
+build_site(file_text)
+
+sys.exit(0)
+
 
