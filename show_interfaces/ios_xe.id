@@ -9,7 +9,7 @@
   <clock_mode>Clock mode is auto</clock_mode>
   <arp_type>ARP type: ARPA</arp_type>, <arp_timeout>ARP Timeout 04:00:00</arp_timeout>
   <last_in_out>Last input never, output never, output hang never</last_in_out>
-  <clear_counters>Last clearing of "show interface" counters never</clear_counters
+  <clear_counters>Last clearing of "show interface" counters never</clear_counters>
   <input_queue>Input queue: 0/75/0/0 (size/max/drops/flushes)</input_queue>; <output_drops>Total output drops: 0</output_drops>
   <queue_strategy>Queueing strategy: fifo</queue_strategy>
   <output_queue>Output queue: 0/40 (size/max)</output_queue>
