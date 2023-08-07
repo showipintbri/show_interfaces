@@ -49,7 +49,7 @@ class BuildFoldersAndFiles:
     # print(just_tag_text)
             
 
-    def get_tag_and_element(string: str, all_raw_tag_text: list) -> list:
+    def get_tag_and_element(self, string: str, all_raw_tag_text: list) -> list:
         list_of_dicts = []
         for tag in all_raw_tag_text:
             w = re.search(f'<{tag}>(?P<element>.+)</{tag}>', string)
