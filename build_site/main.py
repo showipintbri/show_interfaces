@@ -46,7 +46,7 @@ def build_inner_html(file_text):
     for x in list_o_lines:
         old_line = x
         new_line = f'<div>{old_line}</div>\n'
-        text_block =+ new_line
+        text_block += new_line
     return text_block
 
 build_infrastructure(file_text)
