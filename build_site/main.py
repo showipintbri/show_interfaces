@@ -41,13 +41,13 @@ def build_inner_html(file_text):
         new_line = f'<span class="element" id="{tag}">{element}</span>'
         file_text = file_text.replace(old_line, new_line)
     # print(file_text)
-    list_o_lines = file_text.splitlines()
-    text_block = ''
-    for x in list_o_lines:
-        old_line = x
-        new_line = f'<div>{old_line}</div>\n'
-        text_block += new_line
-    return text_block
+    # list_o_lines = file_text.splitlines()
+    # text_block = ''
+    # for x in list_o_lines:
+    #     old_line = x
+    #     new_line = f'<div>{old_line}</div>\n'
+    #     text_block += new_line
+    return file_text
 
 build_infrastructure(file_text)
 
